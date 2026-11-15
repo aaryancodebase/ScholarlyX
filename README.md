@@ -93,11 +93,3 @@ npm run dev
 ## Project Status
 
 Under active development.
-
-## Academic Purpose
-
-Developed as an Information Retrieval and Text Analytics academic project.
-
-## Team
-
-ResearchLens Development Team
