@@ -1,0 +1,3 @@
+New-Item data/raw/.gitkeep -ItemType File
+New-Item data/processed/.gitkeep -ItemType File
+New-Item data/indexes/.gitkeep -ItemType File
