@@ -1,0 +1,2 @@
+import {Bell,CircleHelp} from 'lucide-react';
+export default function Topbar({title,subtitle}){return <header className="topbar"><div><div className="eyebrow">RESEARCH WORKSPACE / {title.toUpperCase()}</div><h1>{title}</h1><p>{subtitle}</p></div><div className="top-actions"><span className="system-pill"><i/> SYSTEM ONLINE</span><button className="icon-button" title="Help"><CircleHelp size={18}/></button><button className="icon-button" title="Notifications"><Bell size={18}/></button><div className="avatar">RL</div></div></header>}

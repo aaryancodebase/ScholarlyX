@@ -1,0 +1,7 @@
+import {useEffect,useState} from 'react';
+import {ChevronLeft,ChevronRight} from 'lucide-react';
+import Topbar from '../components/Topbar';
+import PaperCard from '../components/PaperCard';
+import EmptyState from '../components/EmptyState';
+import {getPapers} from '../services/api';
+export default function Library(){const [data,setData]=useState(null),[page,setPage]=useState(1),[error,setError]=useState('');useEffect(()=>{getPapers({page,limit:10}).then(setData).catch(e=>setError(e.message))},[page]);return <><Topbar title="Paper library" subtitle="Browse papers stored in your PostgreSQL database."/><div className="section-heading"><div><span className="eyebrow">COLLECTION</span><h2>{data?.total??'—'} indexed papers</h2></div><span className="subtle-pill">Page {page}</span></div>{error&&<div className="alert error">{error}</div>}{data?.items?.length?data.items.map(p=><PaperCard key={p.id} paper={{...p,abstract:null}}/>):<EmptyState title="Your library is empty" message="Use Dataset manager to import papers from OpenAlex."/>}<div className="pagination"><button className="secondary-btn" disabled={page<=1} onClick={()=>setPage(p=>p-1)}><ChevronLeft size={15}/> Previous</button><span>Page {page} of {Math.max(1,Math.ceil((data?.total||0)/10))}</span><button className="secondary-btn" disabled={page>=Math.ceil((data?.total||0)/10)} onClick={()=>setPage(p=>p+1)}>Next <ChevronRight size={15}/></button></div></>}
